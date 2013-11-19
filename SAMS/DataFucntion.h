@@ -7,6 +7,7 @@
 
 #include "Data.h"
 #include "FirstMain.h"
+#include <stdlib.h>
 
 /*
 **格式化输出表头,当以表格形式输出用户信息是输出表头信息.
@@ -95,5 +96,19 @@ void Wrong(void);
 */
 void Menu(void);
 
+/*
+**光标定位
+*/
+void gotoxy(short x, short y);
+
+/*
+根据提示notice输入字符串,并进行长度验证(长度<lens),若满足条件,将输入的字符串存放在ID中.
+*/
+void StringInput(char ID[], size_t lens, char notice[]);
+
+/*
+**输出未查找此学生的信息
+*/
+void Nofind(void);
 
 #endif
