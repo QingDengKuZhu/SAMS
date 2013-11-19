@@ -79,6 +79,7 @@ int main(void)
 	printf("文件成功打开,当前记录共%d条\n", count);
 	getchar();		/*避免上述信息一闪而过*/
 	
+	#if 0
 	while (1)	/* while_@ */
 	{
 		system("cls");	/*清屏*/
@@ -146,7 +147,7 @@ int main(void)
 			}
 		}
 	}/* while_@ */
-
+#endif
 
 	return EXIT_SUCCESS;
 }
