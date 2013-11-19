@@ -25,4 +25,14 @@ typedef struct student
 }STUDENT;
 
 
+/*
+**Á´±í½á¹¹
+*/
+typedef struct Node
+{
+	STUDENT data;
+	struct Node *pnext;
+
+}NODE, *PNODE, LINK, *PLINK;
+
 #endif
