@@ -365,7 +365,7 @@ void Qur(PLINK pL)
 	}
 	system("cls");
 	printf("\n    =====>1 Search by number  =====>2 Search by name\n");
-	printf("%d", &select);
+	scanf("%d", &select);
 	if ( 1 == select )
 	{
 		StringInput(searchinput, 10, "input the existing student number:");
@@ -375,7 +375,7 @@ void Qur(PLINK pL)
 			PrintHeader();
 			PrintData(p);
 			printf(END);
-			printf("press any key to return");
+			printf("按任意键返回");
 			getchar();
 		}
 		else
