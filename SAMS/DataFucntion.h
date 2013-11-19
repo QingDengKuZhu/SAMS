@@ -6,6 +6,7 @@
 #define DATAFUNTION_H
 
 #include "Data.h"
+#include "FirstMain.h"
 
 /*
 **格式化输出表头,当以表格形式输出用户信息是输出表头信息.
@@ -22,7 +23,7 @@ void PrintData(PNODE p);
 **根据提示信息,输入分数,并对输入的分数进行合理性验证,若
 **满足条件,则返回输入的分数,notice[]保存提示信息.
 */
-unsigned int NumberInput(char notice[])
+unsigned int NumberInput(char notice[]);
 
 
 /*
@@ -73,7 +74,7 @@ void Tongji(PLINK PL);
 /*
 **按照总分由高到低排列.
 */
-void Sort(PLINK pL)
+void Sort(PLINK pL);
 
 
 /*
