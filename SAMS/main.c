@@ -88,7 +88,7 @@ int main(void)
 		p = r;
 		printf("\n				请输入你的选择(0~9)			\n");
 		scanf("%d", &select);
-	#if 0
+
 		if ( 0 == select)
 		{
 			/**
@@ -146,7 +146,6 @@ int main(void)
 				break;/* 跳出while_@循环 */
 			}
 		}
-		#endif
 	}/* while_@ */
 
 
