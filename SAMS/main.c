@@ -79,7 +79,7 @@ int main(void)
 	printf("文件成功打开,当前记录共%d条\n", count);
 	getchar();		/*避免上述信息一闪而过*/
 	
-	#if 0
+
 	while (1)	/* while_@ */
 	{
 		system("cls");	/*清屏*/
@@ -88,7 +88,7 @@ int main(void)
 		p = r;
 		printf("\n				请输入你的选择(0~9)			\n");
 		scanf("%d", &select);
-
+	#if 0
 		if ( 0 == select)
 		{
 			/**
@@ -146,8 +146,9 @@ int main(void)
 				break;/* 跳出while_@循环 */
 			}
 		}
+		#endif
 	}/* while_@ */
-#endif
+
 
 	return EXIT_SUCCESS;
 }
