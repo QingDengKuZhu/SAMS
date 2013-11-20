@@ -612,7 +612,6 @@ void Tongji(PLINK pL)
 	printf("The highest student by C       score   name:%s totoal score:%d\n",pc->data.name,pc->data.cgrade);
 	printf("\n\npress any key to return");
 	getchar();
-	getchar();
 	return;
 }
 
