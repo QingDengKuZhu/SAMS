@@ -369,7 +369,7 @@ void Qur(PLINK pL)
 	if ( 1 == select )
 	{
 		StringInput(searchinput, 10, "input the existing student number:");
-		p = Locate(pL, searchinput, "num");
+		p = Locate(pL, searchinput, "ID");
 		if (p)
 		{
 			PrintHeader();
