@@ -28,20 +28,20 @@ void PrintData(PNODE p)
 unsigned int NumberInput(char notice[])
 {
 	unsigned  t; /*临时保存输入的数据*/
-	
+	unsigned n;	 /*保存scanf的返回值*/
 	do
 	{
 		printf(notice);		/*显示提示*/
-		scanf("%d", &t);	/*输入分数*/
-
+		n = scanf("%d", &t);	/*输入分数,当输入的不是int型时,n!=0*/
+		fflush(stdin);
 		/*
 		**判断分数是否在合理范围内
 		*/
-		if ( t>100 || t<0 )
+		if ( t>100 || t<0  || n != 1)
 		{
 			printf("\n 分数需要在[0,100]范围内!!!\n");
 		}
-	}while ( t>100 || t<0 );
+	}while ( t>100 || t<0 || n != 1);
 
 	return t;
 }
