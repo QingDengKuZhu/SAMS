@@ -376,7 +376,6 @@ void Qur(PLINK pL)
 			PrintData(p);
 			printf(END);
 			printf("按任意键返回");
-			getchar();
 		}
 		else
 		{
@@ -394,7 +393,6 @@ void Qur(PLINK pL)
 			PrintData(p);
 			printf(END);
 			printf("press any key to return");
-			getchar();
 		}
 		else
 		{
