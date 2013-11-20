@@ -236,7 +236,6 @@ void Del(PLINK pL)
 			r->pnext = p->pnext;
 			free(p);
 			printf("\n==========>É¾³ý³É¹¦!\n");
-			getchar();
 			saveflag = 1;
 		}
 		else
