@@ -8,7 +8,7 @@
 #define FILE_PATH	"DATABASE"	/*指定数据库文件名,若未指定路径,则在当前工作目录*/
 
 #define HEADER1		"      ----------------------------STUDENT----------------------------------  \n"	
-#define HEADER2		"     |    number     |      name     |Comp|Math|Eng |   sum  |  ave  |mici | \n"
+#define HEADER2		"     |    number     |      name     | Eng|Math|  C |   sum  |  ave  |mici | \n"
 #define HEADER3		"     |---------------|---------------|----|----|----|--------|-------|-----| "
 
 #define FORMAT		"        |    %-10s |%-15s|%4d|%4d|%4d| %4d   | %.2f |%4d |\n"
