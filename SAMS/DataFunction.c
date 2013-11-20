@@ -604,15 +604,16 @@ void Tongji(PLINK pL)
 	}
 	
 	printf("\n------------------------------统计结果--------------------------------\n");
-	printf("C语言成绩<60:%d (人)\n",countc);
-	printf("数学成绩  <60:%d (人)\n",countm);
-	printf("英语成绩   <60:%d (人)\n",counte);
+	printf("C语言不及格:%d(人)\n",countc);
+	printf("数学成绩不及格:%d(人)\n",countm);
+	printf("英语成绩不及格:%d(人)\n",counte);
 	printf("-------------------------------------------------------------------------------\n");
 	printf("The highest student by total   scroe   name:%s totoal score:%d\n",pt->data.name,pt->data.total);
 	printf("The highest student by English score   name:%s totoal score:%d\n",pe->data.name,pe->data.egrade);
 	printf("The highest student by Math    score   name:%s totoal score:%d\n",pm->data.name,pm->data.mgrade);
 	printf("The highest student by C       score   name:%s totoal score:%d\n",pc->data.name,pc->data.cgrade);
 	printf("\n\npress any key to return");
+	getchar();
 	getchar();
 	return;
 }
