@@ -424,11 +424,11 @@ void Modify(PLINK pL)
 	printf("修改学生分数");
 	
 	StringInput(findmess,10,"input the existing student number:"); /*输入并检验该学号*/
-	p=Locate(pL,findmess,"num"); /*查询到该节点*/
+	p=Locate(pL,findmess,"ID"); /*查询到该节点*/
 	if(p) /*若p!=NULL,表明已经找到该节点*/
 	{
 		printf("Number:%s,\n",p->data.ID);
-		printf("Name:%s,",p->data.name);
+		printf("Name:%s \n",p->data.name);
 		StringInput(p->data.name,15,"input new name:");
 		
 		printf("C language score:%d,",p->data.cgrade);
