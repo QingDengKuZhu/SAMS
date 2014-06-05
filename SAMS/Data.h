@@ -1,32 +1,32 @@
-/*************************************
-**ÏµÍ³ËùĞèµÄÊı¾İ½á¹¹
+ï»¿/*************************************
+**ç³»ç»Ÿæ‰€éœ€çš„æ•°æ®ç»“æ„
 **************************************/
 
 #ifndef DATA_H
 #define DATA_H
 
 /*
-**Ñ§ÉúÊı¾İ½á¹¹
+**å­¦ç”Ÿæ•°æ®ç»“æ„
 */
 typedef struct student 
 {
-	char ID[10];				/**Ñ§ºÅ**/
-	char name[15];				/*ĞÕÃû*/
+	char ID[10];				/**å­¦å·**/
+	char name[15];				/*å§“å*/
 
-	unsigned int cgrade;		/*CÓïÑÔ³É¼¨*/
-	unsigned int egrade;		/*Ó¢Óï³É¼¨*/
-	unsigned int mgrade;		/*ÊıÑ§³É¼¨*/
+	unsigned int cgrade;		/*Cè¯­è¨€æˆç»©*/
+	unsigned int egrade;		/*è‹±è¯­æˆç»©*/
+	unsigned int mgrade;		/*æ•°å­¦æˆç»©*/
 	
-	unsigned int total;			/*×Ü·Ö*/
-	double ave;					/*Æ½¾ù³É¼¨*/
+	unsigned int total;			/*æ€»åˆ†*/
+	double ave;					/*å¹³å‡æˆç»©*/
 	
-	unsigned int mingci;		/*Ãû´Î*/
+	unsigned int mingci;		/*åæ¬¡*/
 
 }STUDENT;
 
 
 /*
-**Á´±í½á¹¹
+**é“¾è¡¨ç»“æ„
 */
 typedef struct Node
 {

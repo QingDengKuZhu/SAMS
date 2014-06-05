@@ -1,11 +1,11 @@
-/*************************************
-**ÓëÏµÍ³ÓÐ¹ØµÄº¯ÊýµÄ¶¨Òå
+ï»¿/*************************************
+**ä¸Žç³»ç»Ÿæœ‰å…³çš„å‡½æ•°çš„å®šä¹‰
 **************************************/
 
 #include "Data.h"
 #include "DataFucntion.h"
 #include <windows.h>
-#include <conio.h>	/*¶¨Òåcprintfº¯Êý*/
+#include <conio.h>	/*å®šä¹‰cprintfå‡½æ•°*/
 #include <stdio.h>
 
 void PrintHeader(void)
@@ -27,19 +27,19 @@ void PrintData(PNODE p)
 
 unsigned int NumberInput(char notice[])
 {
-	unsigned  t; /*ÁÙÊ±±£´æÊäÈëµÄÊý¾Ý*/
-	unsigned n;	 /*±£´æscanfµÄ·µ»ØÖµ*/
+	unsigned  t; /*ä¸´æ—¶ä¿å­˜è¾“å…¥çš„æ•°æ®*/
+	unsigned n;	 /*ä¿å­˜scanfçš„è¿”å›žå€¼*/
 	do
 	{
-		printf(notice);		/*ÏÔÊ¾ÌáÊ¾*/
-		n = scanf("%d", &t);	/*ÊäÈë·ÖÊý,µ±ÊäÈëµÄ²»ÊÇintÐÍÊ±,n!=0*/
+		printf(notice);		/*æ˜¾ç¤ºæç¤º*/
+		n = scanf("%d", &t);	/*è¾“å…¥åˆ†æ•°,å½“è¾“å…¥çš„ä¸æ˜¯intåž‹æ—¶,n!=0*/
 		fflush(stdin);
 		/*
-		**ÅÐ¶Ï·ÖÊýÊÇ·ñÔÚºÏÀí·¶Î§ÄÚ
+		**åˆ¤æ–­åˆ†æ•°æ˜¯å¦åœ¨åˆç†èŒƒå›´å†…
 		*/
 		if ( t>100 || t<0  || n != 1)
 		{
-			printf("\n ·ÖÊýÐèÒªÔÚ[0,100]·¶Î§ÄÚ!!!\n");
+			printf("\n åˆ†æ•°éœ€è¦åœ¨[0,100]èŒƒå›´å†…!!!\n");
 		}
 	}while ( t>100 || t<0 || n != 1);
 
@@ -49,7 +49,7 @@ unsigned int NumberInput(char notice[])
 void Menu(void)
 {
 	system("cls");
-	gotoxy(10, 5);			/*ÔÚÎÄ±¾´°¿ÚÖÐÉèÖÃ¹â±ê*/
+	gotoxy(10, 5);			/*åœ¨æ–‡æœ¬çª—å£ä¸­è®¾ç½®å…‰æ ‡*/
 	cprintf("		The Students' Grade Management System\n");
 	gotoxy(10, 8);
 	cprintf("-------------------------------Menu-------------------------------\n");
@@ -71,17 +71,17 @@ void Menu(void)
 
 void gotoxy(short x, short y)
 {
-	COORD pos;	/*COORDÔÚwindws.hÖÐ¶¨Òå*/
+	COORD pos;	/*COORDåœ¨windws.hä¸­å®šä¹‰*/
 	pos.X = x; 
 	pos.Y = y;
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); /* ÉèÖÃ¹â±êÎ»ÖÃ */
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos); /* è®¾ç½®å…‰æ ‡ä½ç½® */
 	
 	return;
 }
 
 void Wrong(void)
 {
-	printf("\n\n\n\n\------------------Error:ÊäÈëÊý¾ÝÓÐÎó!	Çë°´ÈÎÒâ¼ü´ÓÐÂ¿ªÊ¼----------- \n");
+	printf("\n\n\n\n\------------------Error:è¾“å…¥æ•°æ®æœ‰è¯¯!	è¯·æŒ‰ä»»æ„é”®ä»Žæ–°å¼€å§‹----------- \n");
 	getchar();
 	return;
 
@@ -89,49 +89,49 @@ void Wrong(void)
 
 void Add(PLINK pL)
 {
-	extern int saveflag;	/*ÅÐ¶ÏÁ´±íÊý¾ÝÊÇ·ñ±»ÐÞ¸Ä(Ôö,É¾, ¸Ä),Èô±»ÐÞ¸ÄÔòsaveflagÎª1,·ñÕßÎª0*/
+	extern int saveflag;	/*åˆ¤æ–­é“¾è¡¨æ•°æ®æ˜¯å¦è¢«ä¿®æ”¹(å¢ž,åˆ , æ”¹),è‹¥è¢«ä¿®æ”¹åˆ™saveflagä¸º1,å¦è€…ä¸º0*/
 	PNODE p, r, s;
 	char ch;
 	char ID[10];
-	int flag = 0;			/*ÖØ¸´Êý×é±êÖ¾Î»,ÈôÊäÈëµÄIDÒÑ¾­´æÔÚ,ÔòflagÖÃÎª1*/
+	int flag = 0;			/*é‡å¤æ•°ç»„æ ‡å¿—ä½,è‹¥è¾“å…¥çš„IDå·²ç»å­˜åœ¨,åˆ™flagç½®ä¸º1*/
 	
 	
 	r = pL;
-	s =pL->pnext;			/*ÒòÎªµ¥Á´±íÒ»¶¨´æÔÚ,ËùÒÔpLÒ»¶¨²»ÎªNULL*/
+	s =pL->pnext;			/*å› ä¸ºå•é“¾è¡¨ä¸€å®šå­˜åœ¨,æ‰€ä»¥pLä¸€å®šä¸ä¸ºNULL*/
 	system("cls");
 
 	while(r->pnext)
 	{
-		r = r->pnext;		/*½«Ö¸ÕëÒÆÖÁÓÚÁ´±í×îÄ©Î²£¬×¼±¸Ìí¼Ó¼ÇÂ¼*/
-	}/*rÖ¸Ïò×îºóÒ»¸öÓÐÐ§½áµã,ÈôDAN	µ¥Á´±íÎª¿Õ,ÔòÖ¸ÏòÍ·½áµã*/
+		r = r->pnext;		/*å°†æŒ‡é’ˆç§»è‡³äºŽé“¾è¡¨æœ€æœ«å°¾ï¼Œå‡†å¤‡æ·»åŠ è®°å½•*/
+	}/*ræŒ‡å‘æœ€åŽä¸€ä¸ªæœ‰æ•ˆç»“ç‚¹,è‹¥DAN	å•é“¾è¡¨ä¸ºç©º,åˆ™æŒ‡å‘å¤´ç»“ç‚¹*/
 
 	/*
-	**Ò»´Î¿ÉÊäÈë¶àÌõ¼ÇÂ¼£¬Ö±ÖÁÊäÈëÑ§ºÅÎª0µÄ¼ÇÂ¼½áµãÌí¼Ó²Ù×÷
+	**ä¸€æ¬¡å¯è¾“å…¥å¤šæ¡è®°å½•ï¼Œç›´è‡³è¾“å…¥å­¦å·ä¸º0çš„è®°å½•ç»“ç‚¹æ·»åŠ æ“ä½œ
 	*/
 	while (1)	/*while_@*/
 	{
 		while (1)	/*while_#*/
 		{
-			StringInput(ID, 10, "input number(press 0 return mune):");/*¸ñÊ½»¯ÊäÈëÑ§ºÅ²¢¼ìÑé*/
+			StringInput(ID, 10, "input number(press 0 return mune):");/*æ ¼å¼åŒ–è¾“å…¥å­¦å·å¹¶æ£€éªŒ*/
 			flag = 0;
 		
 			/*
-			**ÈôÊäÈë0,Ôò·µ»Ø.
+			**è‹¥è¾“å…¥0,åˆ™è¿”å›ž.
 			*/
 			if ( 0 == strcmp(ID, "0"))
 			{
-				return;	/*·µ»ØÖ÷²Ëµ¥*/
+				return;	/*è¿”å›žä¸»èœå•*/
 			}
 			
 			/*
-			**ÅÐ¶ÏÊäÈëµÄIDÊÇ·ñÒÑ¾­´æÔÚ
+			**åˆ¤æ–­è¾“å…¥çš„IDæ˜¯å¦å·²ç»å­˜åœ¨
 			*/
 			s = pL->pnext;
 			while (s)/*while_!*/
 			{
 				if ( 0 == strcmp(s->data.ID, ID) )
 				{
-					flag = 1;	/*ÈôÒÑ´æÔÚ,ÔòflagÖÃÎª1*/
+					flag = 1;	/*è‹¥å·²å­˜åœ¨,åˆ™flagç½®ä¸º1*/
 					break;
 				}
 				s = s->pnext;
@@ -140,11 +140,11 @@ void Add(PLINK pL)
 			if ( flag == 1 )
 			{
 				getchar();
-				printf("ID:%sÒÑ´æÔÚ,ÐèÒªÖØÐÂÊäÈëÂð?(Y/N)", ID);
+				printf("ID:%så·²å­˜åœ¨,éœ€è¦é‡æ–°è¾“å…¥å—?(Y/N)", ID);
 				scanf("%c", &ch);
 				if ( 'y'==ch || 'Y'== ch )
 				{
-					continue;	/*·µ»Øµ½while_#*/
+					continue;	/*è¿”å›žåˆ°while_#*/
 				}
 				else
 				{
@@ -160,22 +160,22 @@ void Add(PLINK pL)
 		p = (PNODE)malloc(sizeof(NODE));
 		if (!p)
 		{
-			printf("¶¯Ì¬ÄÚ´æ·ÖÅäÊ§°Ü!\n");
-			return;	/*·µ»ØÖ÷½çÃæ*/
+			printf("åŠ¨æ€å†…å­˜åˆ†é…å¤±è´¥!\n");
+			return;	/*è¿”å›žä¸»ç•Œé¢*/
 		}
 		strcpy(p->data.ID, ID);
 		StringInput(p->data.name, 15, "Name:");
 	
-		p->data.cgrade = NumberInput("C language Score[0-100]:"); /*ÊäÈë²¢¼ìÑé·ÖÊý£¬·ÖÊý±ØÐëÔÚ0£­100Ö®¼ä*/
-		p->data.mgrade = NumberInput("Math Score[0-100]:");   /*ÊäÈë²¢¼ìÑé·ÖÊý£¬·ÖÊý±ØÐëÔÚ0£­100Ö®¼ä*/
-		p->data.egrade = NumberInput("English Score[0-100]:"); /*ÊäÈë²¢¼ìÑé·ÖÊý£¬·ÖÊý±ØÐëÔÚ0£­100Ö®¼ä*/
-		p->data.total=p->data.egrade+p->data.cgrade+p->data.mgrade; /*¼ÆËã×Ü·Ö*/
-		p->data.ave=(p->data.total/3);  /*¼ÆËãÆ½¾ù·Ö*/
+		p->data.cgrade = NumberInput("C language Score[0-100]:"); /*è¾“å…¥å¹¶æ£€éªŒåˆ†æ•°ï¼Œåˆ†æ•°å¿…é¡»åœ¨0ï¼100ä¹‹é—´*/
+		p->data.mgrade = NumberInput("Math Score[0-100]:");   /*è¾“å…¥å¹¶æ£€éªŒåˆ†æ•°ï¼Œåˆ†æ•°å¿…é¡»åœ¨0ï¼100ä¹‹é—´*/
+		p->data.egrade = NumberInput("English Score[0-100]:"); /*è¾“å…¥å¹¶æ£€éªŒåˆ†æ•°ï¼Œåˆ†æ•°å¿…é¡»åœ¨0ï¼100ä¹‹é—´*/
+		p->data.total=p->data.egrade+p->data.cgrade+p->data.mgrade; /*è®¡ç®—æ€»åˆ†*/
+		p->data.ave=(p->data.total/3);  /*è®¡ç®—å¹³å‡åˆ†*/
 		p->data.mingci=0;
 		
-		p->pnext=NULL; /*±íÃ÷ÕâÊÇÁ´±íµÄÎ²²¿½áµã*/
-		r->pnext=p;  /*½«ÐÂ½¨µÄ½áµã¼ÓÈëÁ´±íÎ²²¿ÖÐ*/
-		r=p;/*rÖ¸Ïò×îºóÒ»¸öÓÐÐ§½áµã*/
+		p->pnext=NULL; /*è¡¨æ˜Žè¿™æ˜¯é“¾è¡¨çš„å°¾éƒ¨ç»“ç‚¹*/
+		r->pnext=p;  /*å°†æ–°å»ºçš„ç»“ç‚¹åŠ å…¥é“¾è¡¨å°¾éƒ¨ä¸­*/
+		r=p;/*ræŒ‡å‘æœ€åŽä¸€ä¸ªæœ‰æ•ˆç»“ç‚¹*/
 		
 		saveflag=1;
 	}	/*while_@*/
@@ -188,16 +188,16 @@ void StringInput(char Buffer[], size_t lens, char notice[])
 	char n[255];
 	do 
 	{
-		printf(notice);			/*ÏÔÊ¾ÌáÊ¾ÐÅÏ¢*/
-		scanf("%s", n);			/*ÊäÈë×Ö·û´®*/
-		/*½øÐÐ³¤¶ÈÐ£Ñé,µ±ÊäÈë×Ö·û´®³¬¹ýlensÊ±,´ÓÐÂÊäÈë*/
-		if ((int)strlen(n)>lens)	/*strlen·µ»ØÎªsize_tÀàÐÍ*/
+		printf(notice);			/*æ˜¾ç¤ºæç¤ºä¿¡æ¯*/
+		scanf("%s", n);			/*è¾“å…¥å­—ç¬¦ä¸²*/
+		/*è¿›è¡Œé•¿åº¦æ ¡éªŒ,å½“è¾“å…¥å­—ç¬¦ä¸²è¶…è¿‡lensæ—¶,ä»Žæ–°è¾“å…¥*/
+		if ((int)strlen(n)>lens)	/*strlenè¿”å›žä¸ºsize_tç±»åž‹*/
 		{
 			printf("\n exceed the required length!	\n");
 		}
 	} while ((int)strlen(n) > lens);
 	
-	strcpy(Buffer, n);/*½«ÊäÈëµÄ×Ö·û´®¸´ÖÆµ½×Ö·û´®BufferÖÐ*/
+	strcpy(Buffer, n);/*å°†è¾“å…¥çš„å­—ç¬¦ä¸²å¤åˆ¶åˆ°å­—ç¬¦ä¸²Bufferä¸­*/
 	return;	
 }
 
@@ -206,20 +206,20 @@ void Del(PLINK pL)
 	extern int saveflag;
 	int select;
 	PNODE p;
-	PNODE r;	/*rÖ¸Ïò±»É¾³ý½áµãÇ°Ò»¸ö½áµã*/
+	PNODE r;	/*ræŒ‡å‘è¢«åˆ é™¤ç»“ç‚¹å‰ä¸€ä¸ªç»“ç‚¹*/
 	char findmess[20];
 	
 	if (!pL->pnext)
 	{
 		system("cls");
-		printf("\nÃ»ÓÐÑ§Éú¼ÇÂ¼\n");
+		printf("\næ²¡æœ‰å­¦ç”Ÿè®°å½•\n");
 		getchar();
 		return;
 	}
 	
 	system("cls");
 	
-	printf("\n  ====>±êºÅ1:Delete by number      ======> ±êºÅ2:delete by name");
+	printf("\n  ====>æ ‡å·1:Delete by number      ======> æ ‡å·2:delete by name");
 	printf("please choice [1,2]:");
 	scanf("%d", &select);
 	if ( 1 == select)
@@ -235,7 +235,7 @@ void Del(PLINK pL)
 			}
 			r->pnext = p->pnext;
 			free(p);
-			printf("\n==========>É¾³ý³É¹¦!\n");
+			printf("\n==========>åˆ é™¤æˆåŠŸ!\n");
 			saveflag = 1;
 		}
 		else
@@ -257,7 +257,7 @@ void Del(PLINK pL)
 			}
 			r->pnext = p->pnext;
 			free(p);
-			printf("\n=====>É¾³ý³É¹¦!\n");
+			printf("\n=====>åˆ é™¤æˆåŠŸ!\n");
 			getchar();
 			saveflag = 1;
 		}
@@ -281,22 +281,22 @@ void Del(PLINK pL)
 
 void Nofind(void)  
 {
-	printf("\nÃ»ÓÐÕÒµ½¸ÃÑ§ÉúÐÅÏ¢!\n");
+	printf("\næ²¡æœ‰æ‰¾åˆ°è¯¥å­¦ç”Ÿä¿¡æ¯!\n");
 	return;
 }
 
-void Disp(PNODE pL)  /*ÏÔÊ¾µ¥Á´±ílÖÐ´æ´¢µÄÑ§Éú¼ÇÂ¼£¬ÄÚÈÝÎªstudent½á¹¹ÖÐ¶¨ÒåµÄÄÚÈÝ*/
+void Disp(PNODE pL)  /*æ˜¾ç¤ºå•é“¾è¡¨lä¸­å­˜å‚¨çš„å­¦ç”Ÿè®°å½•ï¼Œå†…å®¹ä¸ºstudentç»“æž„ä¸­å®šä¹‰çš„å†…å®¹*/
 {
 	PNODE p = pL->pnext;
 	if (!p)
 	{
-		printf("\n====>Ã»ÓÐÑ§Éú¼ÇÂ¼!\n");
+		printf("\n====>æ²¡æœ‰å­¦ç”Ÿè®°å½•!\n");
 		getchar();		
 	}
 	else
 	{
 		printf("\n\n");
-		PrintHeader();		/*Êä³ö±í¸ñÍ·²¿*/
+		PrintHeader();		/*è¾“å‡ºè¡¨æ ¼å¤´éƒ¨*/
 
 		while(p)
 		{
@@ -307,7 +307,7 @@ void Disp(PNODE pL)  /*ÏÔÊ¾µ¥Á´±ílÖÐ´æ´¢µÄÑ§Éú¼ÇÂ¼£¬ÄÚÈÝÎªstudent½á¹¹ÖÐ¶¨ÒåµÄÄÚÈ
 		getchar();
 	}
 	
-	getchar();	/*ÔÚÃ¿¸öreturnÇ°Òª¼ÓÉÏÒ»¸ögetchar()Óï¾ä,·ñÕß»áÒ»ÉÁ¶ø¹ý*/
+	getchar();	/*åœ¨æ¯ä¸ªreturnå‰è¦åŠ ä¸Šä¸€ä¸ªgetchar()è¯­å¥,å¦è€…ä¼šä¸€é—ªè€Œè¿‡*/
 	return;
 
 	
@@ -317,7 +317,7 @@ NODE *Locate(PLINK pL, char findmess[], char nameornum[])
 {
 	PNODE r = NULL;
 	/**
-	°´±àºÅ²éÑ¯
+	æŒ‰ç¼–å·æŸ¥è¯¢
 	**/
 	if ( 0 == strcmp(nameornum, "ID") )
 	{
@@ -332,7 +332,7 @@ NODE *Locate(PLINK pL, char findmess[], char nameornum[])
 		}
 	}
 	/**
-	°´ÕÕÐÕÃû²éÑ¯
+	æŒ‰ç…§å§“åæŸ¥è¯¢
 	**/
 	else if ( 0 == strcmp(nameornum, "name") )
 	{
@@ -352,7 +352,7 @@ NODE *Locate(PLINK pL, char findmess[], char nameornum[])
 
 void Qur(PLINK pL)
 {
-	int select; /*1:°´ÕÕÑ§ºÅ²éÕÒ,2:°´ÕÕÐÕÃû²éÕÒ,ÆäËû,·µ»ØÖ÷½çÃæ(²Ëµ¥)*/
+	int select; /*1:æŒ‰ç…§å­¦å·æŸ¥æ‰¾,2:æŒ‰ç…§å§“åæŸ¥æ‰¾,å…¶ä»–,è¿”å›žä¸»ç•Œé¢(èœå•)*/
 	char searchinput[20];
 	PNODE p = NULL;
 	if (!pL->pnext)
@@ -374,7 +374,7 @@ void Qur(PLINK pL)
 			PrintHeader();
 			PrintData(p);
 			printf(END);
-			printf("°´ÈÎÒâ¼ü·µ»Ø");
+			printf("æŒ‰ä»»æ„é”®è¿”å›ž");
 		}
 		else
 		{
@@ -416,16 +416,16 @@ void Modify(PLINK pL)
 	if ( !pL->pnext )
 	{
 		system("cls");
-		printf("\nÃ»ÓÐÑ§Éú¼ÇÂ¼\n");
+		printf("\næ²¡æœ‰å­¦ç”Ÿè®°å½•\n");
 		getchar();
 		return;
 	}
 	system("cls");
-	printf("ÐÞ¸ÄÑ§Éú·ÖÊý");
+	printf("ä¿®æ”¹å­¦ç”Ÿåˆ†æ•°");
 	
-	StringInput(findmess,10,"input the existing student number:"); /*ÊäÈë²¢¼ìÑé¸ÃÑ§ºÅ*/
-	p=Locate(pL,findmess,"ID"); /*²éÑ¯µ½¸Ã½Úµã*/
-	if(p) /*Èôp!=NULL,±íÃ÷ÒÑ¾­ÕÒµ½¸Ã½Úµã*/
+	StringInput(findmess,10,"input the existing student number:"); /*è¾“å…¥å¹¶æ£€éªŒè¯¥å­¦å·*/
+	p=Locate(pL,findmess,"ID"); /*æŸ¥è¯¢åˆ°è¯¥èŠ‚ç‚¹*/
+	if(p) /*è‹¥p!=NULL,è¡¨æ˜Žå·²ç»æ‰¾åˆ°è¯¥èŠ‚ç‚¹*/
 	{
 		printf("Number:%s,\n",p->data.ID);
 		printf("Name:%s \n",p->data.name);
@@ -444,7 +444,7 @@ void Modify(PLINK pL)
 		p->data.total=p->data.egrade+p->data.cgrade+p->data.mgrade;
 		p->data.ave=(float)(p->data.total/3);
 		p->data.mingci=0;
-		printf("\nÐÞ¸Ä³É¹¦!\n");
+		printf("\nä¿®æ”¹æˆåŠŸ!\n");
 		saveflag=1;
 	}
 	else
@@ -460,8 +460,8 @@ void Modify(PLINK pL)
 void Insert(PLINK pL)
 {
 	extern int saveflag;
-	PNODE p,v,newinfo; /*pÖ¸Ïò²åÈëÎ»ÖÃ£¬newinfoÖ¸ÐÂ²åÈë¼ÇÂ¼*/
-	char ch,num[10],s[10];  /*s[]±£´æ²åÈëµãÎ»ÖÃÖ®Ç°µÄÑ§ºÅ,num[]±£´æÊäÈëµÄÐÂ¼ÇÂ¼µÄÑ§ºÅ*/
+	PNODE p,v,newinfo; /*pæŒ‡å‘æ’å…¥ä½ç½®ï¼ŒnewinfoæŒ‡æ–°æ’å…¥è®°å½•*/
+	char ch,num[10],s[10];  /*s[]ä¿å­˜æ’å…¥ç‚¹ä½ç½®ä¹‹å‰çš„å­¦å·,num[]ä¿å­˜è¾“å…¥çš„æ–°è®°å½•çš„å­¦å·*/
 	int flag=0;
 	v=pL->pnext;
 	system("cls");
@@ -471,14 +471,14 @@ void Insert(PLINK pL)
 		StringInput(s,10,"please input insert location  after the Number:");
 		flag=0;
 		v=pL->pnext;
-		while(v) /*²éÑ¯¸ÃÑ§ºÅÊÇ·ñ´æÔÚ£¬flag=1±íÊ¾¸ÃÑ§ºÅ´æÔÚ*/
+		while(v) /*æŸ¥è¯¢è¯¥å­¦å·æ˜¯å¦å­˜åœ¨ï¼Œflag=1è¡¨ç¤ºè¯¥å­¦å·å­˜åœ¨*/
 		{
 			if(strcmp(v->data.ID, s)==0)  {flag=1;break;}
 			v=v->pnext;
 		}
 		if(flag==1)
 		{
-			break; /*ÈôÑ§ºÅ´æÔÚ£¬Ôò½øÐÐ²åÈëÖ®Ç°µÄÐÂ¼ÇÂ¼µÄÊäÈë²Ù×÷*/
+			break; /*è‹¥å­¦å·å­˜åœ¨ï¼Œåˆ™è¿›è¡Œæ’å…¥ä¹‹å‰çš„æ–°è®°å½•çš„è¾“å…¥æ“ä½œ*/
 		}
 		else
 		{  
@@ -495,7 +495,7 @@ void Insert(PLINK pL)
 			}
 		}
 	}
-	/*ÒÔÏÂÐÂ¼ÇÂ¼µÄÊäÈë²Ù×÷ÓëAdd()ÏàÍ¬*/
+	/*ä»¥ä¸‹æ–°è®°å½•çš„è¾“å…¥æ“ä½œä¸ŽAdd()ç›¸åŒ*/
 	StringInput(num,10,"input new student Number:");
 	v=pL->pnext;
 	while(v)
@@ -516,8 +516,8 @@ void Insert(PLINK pL)
 	newinfo=(PNODE)malloc(sizeof(NODE));
 	if(!newinfo)
 	{
-		printf("\n allocate memory failure "); /*ÈçÃ»ÓÐÉêÇëµ½£¬´òÓ¡ÌáÊ¾ÐÅÏ¢*/
-		return ;             /*·µ»ØÖ÷½çÃæ*/
+		printf("\n allocate memory failure "); /*å¦‚æ²¡æœ‰ç”³è¯·åˆ°ï¼Œæ‰“å°æç¤ºä¿¡æ¯*/
+		return ;             /*è¿”å›žä¸»ç•Œé¢*/
 	}
 	strcpy(newinfo->data.ID,num);
 	StringInput(newinfo->data.name,15,"Name:");
@@ -528,12 +528,12 @@ void Insert(PLINK pL)
 	newinfo->data.ave=(float)(newinfo->data.total/3);
 	newinfo->data.mingci=0;
 	newinfo->pnext=NULL;
-	saveflag=1; /*ÔÚmain()ÓÐ¶Ô¸ÃÈ«¾Ö±äÁ¿µÄÅÐ¶Ï£¬ÈôÎª1,Ôò½øÐÐ´æÅÌ²Ù×÷*/
-	/*½«Ö¸Õë¸³Öµ¸øp,ÒòÎªlÖÐµÄÍ·½ÚµãµÄÏÂÒ»¸ö½Úµã²ÅÊµ¼Ê±£´æ×ÅÑ§ÉúµÄ¼ÇÂ¼*/
+	saveflag=1; /*åœ¨main()æœ‰å¯¹è¯¥å…¨å±€å˜é‡çš„åˆ¤æ–­ï¼Œè‹¥ä¸º1,åˆ™è¿›è¡Œå­˜ç›˜æ“ä½œ*/
+	/*å°†æŒ‡é’ˆèµ‹å€¼ç»™p,å› ä¸ºlä¸­çš„å¤´èŠ‚ç‚¹çš„ä¸‹ä¸€ä¸ªèŠ‚ç‚¹æ‰å®žé™…ä¿å­˜ç€å­¦ç”Ÿçš„è®°å½•*/
 	p=pL->pnext;
 	while(1)
 	{
-		if(strcmp(p->data.ID,s)==0) /*ÔÚÁ´±íÖÐ²åÈëÒ»¸ö½Úµã*/
+		if(strcmp(p->data.ID,s)==0) /*åœ¨é“¾è¡¨ä¸­æ’å…¥ä¸€ä¸ªèŠ‚ç‚¹*/
 		{
 			newinfo->pnext=p->pnext;
 			p->pnext=newinfo;
@@ -552,9 +552,9 @@ void Insert(PLINK pL)
 void Tongji(PLINK pL)
 {
 	
-	PNODE pm,pe,pc,pt; /*ÓÃÓÚÖ¸Ïò·ÖÊý×î¸ßµÄ½Úµã*/
+	PNODE pm,pe,pc,pt; /*ç”¨äºŽæŒ‡å‘åˆ†æ•°æœ€é«˜çš„èŠ‚ç‚¹*/
 	PNODE r=pL->pnext;
-	int countc=0,countm=0,counte=0; /*±£´æÈýÃÅ³É¼¨ÖÐ²»¼°¸ñµÄÈËÊý*/
+	int countc=0,countm=0,counte=0; /*ä¿å­˜ä¸‰é—¨æˆç»©ä¸­ä¸åŠæ ¼çš„äººæ•°*/
 	if(!r)
 	{
 		system("cls");
@@ -600,10 +600,10 @@ void Tongji(PLINK pL)
 		r=r->pnext;
 	}
 	
-	printf("\n------------------------------Í³¼Æ½á¹û--------------------------------\n");
-	printf("CÓïÑÔ²»¼°¸ñ:%d(ÈË)\n",countc);
-	printf("ÊýÑ§³É¼¨²»¼°¸ñ:%d(ÈË)\n",countm);
-	printf("Ó¢Óï³É¼¨²»¼°¸ñ:%d(ÈË)\n",counte);
+	printf("\n------------------------------ç»Ÿè®¡ç»“æžœ--------------------------------\n");
+	printf("Cè¯­è¨€ä¸åŠæ ¼:%d(äºº)\n",countc);
+	printf("æ•°å­¦æˆç»©ä¸åŠæ ¼:%d(äºº)\n",countm);
+	printf("è‹±è¯­æˆç»©ä¸åŠæ ¼:%d(äºº)\n",counte);
 	printf("-------------------------------------------------------------------------------\n");
 	printf("The highest student by total   scroe   name:%s totoal score:%d\n",pt->data.name,pt->data.total);
 	printf("The highest student by English score   name:%s totoal score:%d\n",pe->data.name,pe->data.egrade);
@@ -628,51 +628,51 @@ void Sort(PLINK pL)
 		return ;
 	}
 
-	ll=(PNODE)malloc(sizeof(NODE)); /*ÓÃÓÚ´´½¨ÐÂµÄ½Úµã*/
+	ll=(PNODE)malloc(sizeof(NODE)); /*ç”¨äºŽåˆ›å»ºæ–°çš„èŠ‚ç‚¹*/
 	if(!ll)
 	{
-		printf("\n allocate memory failure "); /*ÈçÃ»ÓÐÉêÇëµ½£¬´òÓ¡ÌáÊ¾ÐÅÏ¢*/
-		return ;             /*·µ»ØÖ÷½çÃæ*/
+		printf("\n allocate memory failure "); /*å¦‚æ²¡æœ‰ç”³è¯·åˆ°ï¼Œæ‰“å°æç¤ºä¿¡æ¯*/
+		return ;             /*è¿”å›žä¸»ç•Œé¢*/
 	}
 	ll->pnext=NULL;
 	system("cls");
 	p=pL->pnext;
 	while(p) /*p!=NULL*/
 	{
-		s=(PNODE)malloc(sizeof(NODE)); /*ÐÂ½¨½ÚµãÓÃÓÚ±£´æ´ÓÔ­Á´±íÖÐÈ¡³öµÄ½ÚµãÐÅÏ¢*/
+		s=(PNODE)malloc(sizeof(NODE)); /*æ–°å»ºèŠ‚ç‚¹ç”¨äºŽä¿å­˜ä»ŽåŽŸé“¾è¡¨ä¸­å–å‡ºçš„èŠ‚ç‚¹ä¿¡æ¯*/
 		if(!s) /*s==NULL*/
 		{
-			printf("\n allocate memory failure "); /*ÈçÃ»ÓÐÉêÇëµ½£¬´òÓ¡ÌáÊ¾ÐÅÏ¢*/
-			return ;             /*·µ»ØÖ÷½çÃæ*/
+			printf("\n allocate memory failure "); /*å¦‚æ²¡æœ‰ç”³è¯·åˆ°ï¼Œæ‰“å°æç¤ºä¿¡æ¯*/
+			return ;             /*è¿”å›žä¸»ç•Œé¢*/
 		}
-		s->data=p->data; /*ÌîÊý¾ÝÓò*/
-		s->pnext=NULL;    /*Ö¸ÕëÓòÎª¿Õ*/
+		s->data=p->data; /*å¡«æ•°æ®åŸŸ*/
+		s->pnext=NULL;    /*æŒ‡é’ˆåŸŸä¸ºç©º*/
 		rr=ll;
-		/*rrÁ´±íÓÚ´æ´¢²åÈëµ¥¸ö½Úµãºó±£³ÖÅÅÐòµÄÁ´±í£¬llÊÇÕâ¸öÁ´±íµÄÍ·Ö¸Õë,Ã¿´Î´ÓÍ·¿ªÊ¼²éÕÒ²åÈëÎ»ÖÃ*/
+		/*rré“¾è¡¨äºŽå­˜å‚¨æ’å…¥å•ä¸ªèŠ‚ç‚¹åŽä¿æŒæŽ’åºçš„é“¾è¡¨ï¼Œllæ˜¯è¿™ä¸ªé“¾è¡¨çš„å¤´æŒ‡é’ˆ,æ¯æ¬¡ä»Žå¤´å¼€å§‹æŸ¥æ‰¾æ’å…¥ä½ç½®*/
 
 		while(rr->pnext!=NULL && rr->pnext->data.total>=p->data.total)
 		{
-			rr=rr->pnext;/*Ö¸ÕëÒÆÖÁ×Ü·Ö±ÈpËùÖ¸µÄ½ÚµãµÄ×Ü·ÖÐ¡µÄ½ÚµãÎ»ÖÃ*/
+			rr=rr->pnext;/*æŒ‡é’ˆç§»è‡³æ€»åˆ†æ¯”pæ‰€æŒ‡çš„èŠ‚ç‚¹çš„æ€»åˆ†å°çš„èŠ‚ç‚¹ä½ç½®*/
 		} 
-		if(rr->pnext==NULL)/*ÈôÐÂÁ´±íllÖÐµÄËùÓÐ½ÚµãµÄ×Ü·ÖÖµ¶¼±Èp->data.total´óÊ±£¬¾Í½«pËùÖ¸½Úµã¼ÓÈëÁ´±íÎ²²¿*/
+		if(rr->pnext==NULL)/*è‹¥æ–°é“¾è¡¨llä¸­çš„æ‰€æœ‰èŠ‚ç‚¹çš„æ€»åˆ†å€¼éƒ½æ¯”p->data.totalå¤§æ—¶ï¼Œå°±å°†pæ‰€æŒ‡èŠ‚ç‚¹åŠ å…¥é“¾è¡¨å°¾éƒ¨*/
 		{
 			rr->pnext=s;
 		}
-		else /*·ñÔò½«¸Ã½Úµã²åÈëÖÁµÚÒ»¸ö×Ü·Ö×Ö¶Î±ÈËüÐ¡µÄ½ÚµãµÄÇ°Ãæ*/
+		else /*å¦åˆ™å°†è¯¥èŠ‚ç‚¹æ’å…¥è‡³ç¬¬ä¸€ä¸ªæ€»åˆ†å­—æ®µæ¯”å®ƒå°çš„èŠ‚ç‚¹çš„å‰é¢*/
 		{
 			s->pnext=rr->pnext;
 			rr->pnext=s;
 		}
-		p=p->pnext; /*Ô­Á´±íÖÐµÄÖ¸ÕëÏÂÒÆÒ»¸ö½Úµã*/
+		p=p->pnext; /*åŽŸé“¾è¡¨ä¸­çš„æŒ‡é’ˆä¸‹ç§»ä¸€ä¸ªèŠ‚ç‚¹*/
 	}
 
-	pL->pnext=ll->pnext; /*llÖÐ´æ´¢ÊÇµÄÒÑÅÅÐòµÄÁ´±íµÄÍ·Ö¸Õë*/
-	p=pL->pnext;           /*ÒÑÅÅºÃÐòµÄÍ·Ö¸Õë¸³¸øp£¬×¼±¸ÌîÐ´Ãû´Î*/
-	while(p!=NULL)  /*µ±p²»Îª¿ÕÊ±£¬½øÐÐÏÂÁÐ²Ù×÷*/
+	pL->pnext=ll->pnext; /*llä¸­å­˜å‚¨æ˜¯çš„å·²æŽ’åºçš„é“¾è¡¨çš„å¤´æŒ‡é’ˆ*/
+	p=pL->pnext;           /*å·²æŽ’å¥½åºçš„å¤´æŒ‡é’ˆèµ‹ç»™pï¼Œå‡†å¤‡å¡«å†™åæ¬¡*/
+	while(p!=NULL)  /*å½“pä¸ä¸ºç©ºæ—¶ï¼Œè¿›è¡Œä¸‹åˆ—æ“ä½œ*/
 	{
-		i++;       /*½áµãÐòºÅ*/
-		p->data.mingci=i;   /*½«Ãû´Î¸³Öµ*/
-		p=p->pnext;   /*Ö¸ÕëºóÒÆ*/
+		i++;       /*ç»“ç‚¹åºå·*/
+		p->data.mingci=i;   /*å°†åæ¬¡èµ‹å€¼*/
+		p=p->pnext;   /*æŒ‡é’ˆåŽç§»*/
 
 	}
 	saveflag=1;
@@ -687,10 +687,10 @@ void Save(PLINK pL)
 	FILE* fp;
 	PNODE p;
 	int count=0;
-	fp=fopen(FILE_PATH,"wb");/*ÒÔÖ»Ð´·½Ê½´ò¿ª¶þ½øÖÆÎÄ¼þ*/
-	if(fp==NULL) /*´ò¿ªÎÄ¼þÊ§°Ü*/
+	fp=fopen(FILE_PATH,"wb");/*ä»¥åªå†™æ–¹å¼æ‰“å¼€äºŒè¿›åˆ¶æ–‡ä»¶*/
+	if(fp==NULL) /*æ‰“å¼€æ–‡ä»¶å¤±è´¥*/
 	{
-		printf("\n=====>ÎÄ¼þ´ò¿ª´íÎó!\n");
+		printf("\n=====>æ–‡ä»¶æ‰“å¼€é”™è¯¯!\n");
 		getchar();
 		return ;
 	}
@@ -699,7 +699,7 @@ void Save(PLINK pL)
 
 	while(p)
 	{
-		if(fwrite(p,sizeof(NODE),1,fp)==1)/*Ã¿´ÎÐ´Ò»Ìõ¼ÇÂ¼»òÒ»¸ö½ÚµãÐÅÏ¢ÖÁÎÄ¼þ*/
+		if(fwrite(p,sizeof(NODE),1,fp)==1)/*æ¯æ¬¡å†™ä¸€æ¡è®°å½•æˆ–ä¸€ä¸ªèŠ‚ç‚¹ä¿¡æ¯è‡³æ–‡ä»¶*/
 		{ 
 			p=p->pnext;
 			count++;
@@ -722,7 +722,7 @@ void Save(PLINK pL)
 		printf("the current link is empty,no student record is saved!\n");
 		getchar();
 	}
-	fclose(fp); /*¹Ø±Õ´ËÎÄ¼þ*/
+	fclose(fp); /*å…³é—­æ­¤æ–‡ä»¶*/
 }
 
 

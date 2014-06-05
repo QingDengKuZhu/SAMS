@@ -1,18 +1,18 @@
-/*************************************
-**°üº¬Ò»Ğ©Í·ÎÄ¼şÎÄ¼ş
+ï»¿/*************************************
+**åŒ…å«ä¸€äº›å¤´æ–‡ä»¶æ–‡ä»¶
 **************************************/
 
 #ifndef FIRSTMAIN_H
 #define FIRSTMAIN_H
 
-#define FILE_PATH	"DATABASE"	/*Ö¸¶¨Êı¾İ¿âÎÄ¼şÃû,ÈôÎ´Ö¸¶¨Â·¾¶,ÔòÔÚµ±Ç°¹¤×÷Ä¿Â¼*/
+#define FILE_PATH	"DATABASE"	/*æŒ‡å®šæ•°æ®åº“æ–‡ä»¶å,è‹¥æœªæŒ‡å®šè·¯å¾„,åˆ™åœ¨å½“å‰å·¥ä½œç›®å½•*/
 
 #define HEADER1		"      ----------------------------STUDENT----------------------------------  \n"	
 #define HEADER2		"     |    number     |      name     | Eng|Math|  C |   sum  |  ave  |mici | \n"
 #define HEADER3		"     |---------------|---------------|----|----|----|--------|-------|-----| "
 
 #define FORMAT		"        |    %-10s |%-15s|%4d|%4d|%4d| %4d   | %.2f |%4d |\n"
-#define DATA		p->data.ID,p->data.name,p->data.egrade,p->data.mgrade,p->data.cgrade,p->data.total,p->data.ave,p->data.mingci /*²»ÄÜÓÃ¿Õ¸ñ·Ö¸ô*/
+#define DATA		p->data.ID,p->data.name,p->data.egrade,p->data.mgrade,p->data.cgrade,p->data.total,p->data.ave,p->data.mingci /*ä¸èƒ½ç”¨ç©ºæ ¼åˆ†éš”*/
 
 #define END			"       --------------------------------------------------------------------- \n"
 
